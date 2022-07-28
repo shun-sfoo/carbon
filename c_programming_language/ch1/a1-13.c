@@ -2,8 +2,8 @@
 
 #define MAXHIST 15 /* max length of histogram */
 #define MAXWORD 11 /* max length of a word */
-#define IN 1       /* inside a word */
-#define OUT 0      /* out side a word */
+#define IN      1  /* inside a word */
+#define OUT     0  /* out side a word */
 
 /* print horizontal histogram */
 int main() {
@@ -38,13 +38,13 @@ int main() {
 
   maxvalue = 0;
 
-  for (i = 0; i < MAXWORD; ++i)
+  for (i = 1; i < MAXWORD; ++i)
     if (wl[i] > maxvalue) maxvalue = wl[i];
 
   for (i = 1; i < MAXWORD; ++i) {
     printf("%5d - %5d : ", i, wl[i]);
     if (wl[i] > 0) {
-      if ((len = wl[i] * MAXHIST / MAXWORD) <= 0) len = 1;
+      if ((len = wl[i] * MAXHIST / maxvalue) <= 0) len = 1;
     } else
       len = 0;
 
