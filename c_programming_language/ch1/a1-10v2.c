@@ -4,13 +4,13 @@
 int main() {
   int c;
   while ((c = getchar()) != EOF) {
-    if (c == ' ') 
+    if (c == ' ')
       printf("\\b");
     else if (c == '\t')
       printf("\\t");
     else if (c == '\\')
       printf("\\\\");
-    else 
+    else
       putchar(c);
   }
 }

@@ -4,7 +4,7 @@
 int main() {
   int c, nb, nt, nl;
   nb = nt = nl = 0;
-  while((c = getchar()) != EOF) {
+  while ((c = getchar()) != EOF) {
     if (c == ' ') ++nb;
     if (c == '\n') ++nl;
     if (c == '\t') ++nt;

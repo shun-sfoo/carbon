@@ -8,7 +8,7 @@ int main() {
   int c, lastc;
   lastc = NOBLANK;
   while ((c = getchar()) != EOF) {
-    if (c != ' ' || lastc != ' ' ) putchar(c);
+    if (c != ' ' || lastc != ' ') putchar(c);
     lastc = c;
   }
 }

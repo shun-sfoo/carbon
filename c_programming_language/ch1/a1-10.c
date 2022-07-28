@@ -4,12 +4,11 @@
 int main() {
   int c;
   while ((c = getchar()) != EOF) {
-    if (c == ' ')printf("\\b");
-    if (c == '\t')printf("\\t");
-    if (c == '\\')printf("\\\\");
-    if (c!= ' ')
+    if (c == ' ') printf("\\b");
+    if (c == '\t') printf("\\t");
+    if (c == '\\') printf("\\\\");
+    if (c != ' ')
       if (c != '\t')
-        if (c != '\\')
-          putchar(c);
+        if (c != '\\') putchar(c);
   }
 }
