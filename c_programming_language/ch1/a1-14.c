@@ -1,37 +1,34 @@
+#include <ctype.h>
 #include <stdio.h>
 
-#define CHARACTERS 26
-#define MAXHIST    15
+#define MAXHIST 15  /* max length of histgram */
+#define MAXCHAR 128 /* max different characters */
 
+/* print horizontal histgram freq. of different characters */
 int main() {
-  int nt, nl, ns, nother, maxvalue, i, c, len;
-  nother = nt = nl = ns = 0;
-  int chars[CHARACTERS] = {0};
+  int c, i;
+  int len;               /* length of each bar */
+  int maxvalue;          /* maximum value for cc[] */
+  int cc[MAXCHAR] = {0}; /* character counters */
 
-  while ((c = getchar()) != EOF) {
-    if (c == ' ')
-      ++ns;
-    else if (c == '\t')
-      ++nt;
-    else if (c == '\n')
-      ++nl;
-    else if (c >= 'a' && c <= 'z')
-      ++chars[c - 'a'];
-    else
-      ++nother;
-  }
+  while ((c = getchar()) != EOF)
+    if (c < MAXCHAR) ++cc[c];
 
   maxvalue = 0;
-  for (i = 0; i < CHARACTERS; ++i) {
-    if (chars[i] > maxvalue) maxvalue = chars[i];
+  for (i = 1; i < MAXCHAR; ++i) {
+    if (cc[i] > maxvalue) maxvalue = cc[i];
   }
 
-  for (i = 0; i < CHARACTERS; ++i) {
-    if (chars[i] > 0) {
-      if ((len = chars[i] * MAXHIST / maxvalue) <= 0) len = 1;
-
-    } else
+  for (i = 1; i < MAXCHAR; ++i) {
+    if (isprint(i))
+      printf("%5d - %c - %5d : ", i, i, cc[i]);
+    else
+      printf("%5d -   - %5d : ", i, cc[i]);
+    if (cc[i] > 0) {
+      if ((len = cc[i] * MAXHIST / maxvalue) <= 0) len = 1;
+    } else {
       len = 0;
+    }
     while (len > 0) {
       putchar('*');
       --len;

@@ -1,20 +1,21 @@
 #include <stdio.h>
 
-#define MAXLINE 1000
+#define MAXLINE 1000 /* 允许的输入行的最大长度 */
 
-int max;
-char line[MAXLINE];
-char longest[MAXLINE];
+int max;               /* 到目前为止发现的最长行的长度 */
+char line[MAXLINE];    /* 当前的输入行 */
+char longest[MAXLINE]; /* 用于保存最长的行 */
 
 int gtline(void);
 void copy(void);
 
+/* 打印最长的输入行: 特别版本 */
 int main() {
   int len;
   extern int max;
   extern char longest[];
-  max = 0;
 
+  max = 0;
   while ((len = gtline()) > 0) {
     if (len > max) {
       max = len;
@@ -22,11 +23,13 @@ int main() {
     }
   }
 
-  if (max > 0) printf("%s\n", longest);
+  if (max > 0) /* 存在这样的行 */
+    printf("%s\n", longest);
 
   return 0;
 }
 
+/* getline 函数: 特别版本 */
 int gtline() {
   int i, c;
   extern char line[];
@@ -43,9 +46,9 @@ int gtline() {
   return i;
 }
 
+/* copy 函数: 特别版本 */
 void copy() {
-  extern char line[];
-  extern char longest[];
   int i = 0;
+  extern char line[], longest[];
   while ((longest[i] = line[i]) != '\0') ++i;
 }
