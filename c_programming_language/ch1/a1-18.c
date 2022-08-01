@@ -34,8 +34,8 @@ int rmove(char s[]) {
   int i;
 
   i = 0;
-  while (s[i++] != '\n') /* find newline character */
-    ;
+  while (s[i] != '\n') /* find newline character */
+    ++i;
 
   --i; /* back off from '\n' */
   while (i >= 0 && (s[i] == '\t' || s[i] == ' ')) --i;
